@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const { animals } = require("./data/animals");
-
+const PORT = process.env.PORT;
 function filterByQuery(query, animalsArray) {
   let personalityTraitsArray = [];
   // Note that we save the animalsArray as filteredResults here:
@@ -55,6 +55,6 @@ app.get("/api/animals", (req, res) => {
   res.json(results);
 });
 
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log("API server now on port 3001!");
 });
