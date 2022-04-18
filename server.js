@@ -1,8 +1,9 @@
 const fs = require("fs");
 const path = require("path");
-
 const express = require("express");
 const app = express();
+const { animals } = require("./data/animals");
+const PORT = process.env.PORT || 3001;
 
 //middleware
 //create routes for front end files
@@ -12,9 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
 //
-
-const { animals } = require("./data/animals");
-const PORT = process.env.PORT || 3001;
 
 function filterByQuery(query, animalsArray) {
   let personalityTraitsArray = [];
@@ -78,7 +76,6 @@ function createNewAnimal(body, animalsArray) {
 }
 
 function validateAnimal(animal) {
-  //if there is no animal name or if animal name is not a string
   if (!animal.name || typeof animal.name !== "string") {
     return false;
   }
@@ -88,8 +85,10 @@ function validateAnimal(animal) {
   if (!animal.diet || typeof animal.diet !== "string") {
     return false;
   }
-  if (!animal.personalityTraits || !Array.isArray(animal.personalityTraits))
+  if (!animal.personalityTraits || !Array.isArray(animal.personalityTraits)) {
     return false;
+  }
+  return true;
 }
 
 app.get("/api/animals", (req, res) => {
@@ -119,6 +118,7 @@ app.post("/api/animals", (req, res) => {
   } else {
     const animal = createNewAnimal(req.body, animals);
     res.json(animal);
+    console.log(animal);
   }
 });
 //loads index.html on thr server
