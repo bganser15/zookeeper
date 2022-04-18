@@ -117,6 +117,16 @@
         "loving"
       ],
       "id": "11"
+    },
+    {
+      "name": "dill",
+      "species": "cat",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "loving",
+        "goofy"
+      ],
+      "id": "12"
     }
   ]
 }

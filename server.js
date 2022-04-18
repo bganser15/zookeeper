@@ -121,8 +121,21 @@ app.post("/api/animals", (req, res) => {
     console.log(animal);
   }
 });
-//loads index.html on thr server
+//loads index.html on the server
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+//loads animal.html on the server
+//not animals/api because it is referencing just the html page
+app.get("/animals", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/animals.html"));
+});
+//loads zookeeper page onto server
+app.get("/zookeepers", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/zookeepers.html"));
+});
+//wildcard route in case user goes to undefined path-wildcard route always comes last
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
