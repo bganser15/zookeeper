@@ -127,6 +127,15 @@
         "goofy"
       ],
       "id": "12"
+    },
+    {
+      "name": "Henry",
+      "species": "Hippo",
+      "diet": "omnivore",
+      "personalityTraits": [
+        "loving"
+      ],
+      "id": "13"
     }
   ]
 }
